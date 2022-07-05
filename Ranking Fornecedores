@@ -1,0 +1,18 @@
+select
+products.product_name as produto
+,categories.category_name as categ
+,suppliers.company_name as fornec
+,suppliers.city as cidad
+,COUNT(order_details.order_id)
+
+from products
+
+inner join categories on 
+categories.category_id = products.category_id
+inner join suppliers on
+suppliers.supplier_id = products.supplier_id
+inner join order_details on
+order_details.product_id = products.product_id
+
+group by 
+produto,categ,fornec,cidad
